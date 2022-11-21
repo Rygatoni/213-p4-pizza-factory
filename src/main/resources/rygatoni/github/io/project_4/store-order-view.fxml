@@ -12,19 +12,19 @@
                     <children>
                         <VBox layoutX="14.0" layoutY="25.0" prefHeight="598.0" prefWidth="509.0">
                             <children>
-                                <Label prefHeight="58.0" prefWidth="147.0" text="Store Orders" textFill="#947d7d">
+                                <Label alignment="CENTER" prefHeight="58.0" prefWidth="561.0" text="Store Orders" textFill="#947d7d">
                                     <font>
                                         <Font name="Cambria Bold" size="25.0" />
                                     </font>
                                 </Label>
                                 <ListView editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-color: white;" />
-                                <AnchorPane prefHeight="93.0" prefWidth="545.0">
-                                    <children>
-                                        <Button layoutX="180.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cancel Order" />
-                                        <Button layoutX="288.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Export Orders" />
-                                        <Button fx:id="mainMenu" layoutX="26.0" layoutY="34.0" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back To Main Menu" />
-                                    </children>
-                                </AnchorPane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                                        <Button fx:id="mainMenu" layoutX="48.0" layoutY="13.0" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back To Main Menu" />
+                                        <Button layoutX="212.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cancel Order" />
+                                        <Button layoutX="343.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Export Orders" />
+                           </children>
+                        </Pane>
                             </children>
                         </VBox>
                     </children></AnchorPane>
