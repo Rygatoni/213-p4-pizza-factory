@@ -4,43 +4,65 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="626.0" prefWidth="649.0" style="-fx-background-color: antiquewhite;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rygatoni.github.io.project_4.CurrentOrderController">
+<VBox prefHeight="626.0" prefWidth="649.0" style="-fx-background-color: antiquewhite;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rygatoni.github.io.project_4.CurrentOrderController">
     <children>
-        <ScrollPane prefHeight="626.0" prefWidth="708.0" style="-fx-background-color: antiquewhite;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-59.0" AnchorPane.topAnchor="0.0">
+        <ScrollPane style="-fx-background-color: antiquewhite;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-59.0" AnchorPane.topAnchor="0.0">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="736.0" prefWidth="894.0" style="-fx-background-color: antiquewhite;">
+                <VBox alignment="CENTER" style="-fx-background-color: antiquewhite;">
                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="614.0" prefWidth="474.0" style="-fx-background-color: antiquewhite;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="CENTER" style="-fx-background-color: antiquewhite;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <Label alignment="CENTER" prefHeight="34.0" prefWidth="243.0" text="Current Order" textFill="#947d7d">
                                     <font>
                                         <Font name="Cambria Bold" size="27.0" />
                                     </font>
                                 </Label>
-                                <ListView editable="true" prefHeight="142.0" prefWidth="474.0" style="-fx-border-color: white;" />
-                                <AnchorPane prefHeight="99.0" prefWidth="474.0">
-                                    <children>
-                              <Button layoutX="36.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back To Main Menu" textFill="#947d7d">
+                                <ListView fx:id="pizzaList" editable="true" prefHeight="142.0" prefWidth="474.0" style="-fx-border-color: white;" />
+                        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="474.0">
+                           <children>
+                              <Button fx:id="mainMenu" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back To Main Menu" textFill="#947d7d">
                                  <font>
                                     <Font name="Cambria" size="12.0" />
                                  </font>
                               </Button>
-                                        <Button layoutX="178.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Remove Pizza" textFill="#947d7d" />
-                                        <Button layoutX="285.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Clear Order" textFill="#947d7d" />
-                                        <Button layoutX="382.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Place Order" textFill="#947d7d" />
-                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="67.0" prefHeight="17.0" prefWidth="65.0" text="Total: " textFill="#947d7d">
+                                        <Button fx:id="removePizza" mnemonicParsing="false" onAction="#removePizzaPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Remove Pizza" textFill="#947d7d" />
+                                        <Button fx:id="clearOrder" mnemonicParsing="false" onAction="#clearOrderPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Clear Order" textFill="#947d7d" />
+                                        <Button fx:id="placeOrder" mnemonicParsing="false" onAction="#placeOrderPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Place Order" textFill="#947d7d" />
+                           </children>
+                        </HBox>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="52.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="427.0" minWidth="10.0" prefWidth="422.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Subtotal:" />
+                              <Label text="Tax:" GridPane.rowIndex="1" />
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="65.0" text="Total: " textFill="#947d7d" GridPane.rowIndex="2">
                                             <font>
                                                 <Font name="Cambria Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label layoutX="135.0" layoutY="67.0" prefHeight="17.0" prefWidth="73.0" text="currentOrderTotal" textFill="#947d7d" />
+                                        <Label fx:id="subtotal" prefHeight="17.0" prefWidth="73.0" text="currentOrderTotal" textFill="#947d7d" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                                <AnchorPane prefHeight="99.0" prefWidth="474.0">
+                                    <children>
+                              <Label fx:id="salesTax" layoutX="253.0" layoutY="67.0" text="Label" />
+                              <Label fx:id="orderTotal" layoutX="334.0" layoutY="67.0" text="Label" />
                                     </children>
                                 </AnchorPane>
                             </children>
                         </VBox>
                     </children>
-                </AnchorPane>
+                </VBox>
             </content>
         </ScrollPane>
     </children>
-</AnchorPane>
+</VBox>
