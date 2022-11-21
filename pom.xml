@@ -128,7 +128,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>rygatoni.github.io.project4/rygatoni.github.io.project4.PizzaFactoryMain
+                            <mainClass>rygatoni.github.io.project4/rygatoni.github.io.project_4.PizzaFactoryMain
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

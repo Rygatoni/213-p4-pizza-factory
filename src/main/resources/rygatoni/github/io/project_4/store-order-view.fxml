@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: antiquewhite;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: antiquewhite;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rygatoni.github.io.project_4.StoreOrderController">
     <children>
         <ScrollPane prefHeight="511.0" prefWidth="704.0" style="-fx-background-color: antiquewhite;" AnchorPane.bottomAnchor="-111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-104.0" AnchorPane.topAnchor="0.0">
             <content>
@@ -22,7 +22,7 @@
                                     <children>
                                         <Button layoutX="180.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cancel Order" />
                                         <Button layoutX="288.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Export Orders" />
-                                        <Button layoutX="26.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back To Main Menu" />
+                                        <Button fx:id="mainMenu" layoutX="26.0" layoutY="34.0" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back To Main Menu" />
                                     </children>
                                 </AnchorPane>
                             </children>

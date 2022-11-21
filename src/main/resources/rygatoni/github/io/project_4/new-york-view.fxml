@@ -69,7 +69,7 @@
                                     <children>
                                         <Label layoutX="25.0" layoutY="14.0" prefHeight="25.0" prefWidth="60.0" text="Total: " />
                                         <Label layoutX="71.0" layoutY="18.0" text="calculated total" />
-                                        <Button layoutX="220.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back to Main Menu" textFill="#947d7d" />
+                                        <Button fx:id="mainMenu" layoutX="220.0" layoutY="18.0" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back to Main Menu" textFill="#947d7d" />
                                         <Button layoutX="405.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Add to Order" textFill="#947d7d" />
                                     </children>
                                 </Pane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="398.0" maxWidth="466.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="466.0" style="-fx-background-color: antiquewhite;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_4.MainController">
+<AnchorPane maxHeight="398.0" maxWidth="466.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="466.0" style="-fx-background-color: antiquewhite;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rygatoni.github.io.project_4.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -22,15 +22,15 @@
                                         <Font name="System Bold" size="12.0" />
                                     </font>
                                 </Label>
-                                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Chicago Pizza" textFill="#947d7d" />
-                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="276.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="New York Pizza" textFill="#947d7d" />
+                                <Button fx:id="chicagoPizza" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chicagoPress" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Chicago Pizza" textFill="#947d7d" />
+                                <Button fx:id="newYorkPizza" mnemonicParsing="false" onAction="#newYorkPress" prefHeight="25.0" prefWidth="276.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="New York Pizza" textFill="#947d7d" />
                             </children>
                         </VBox>
                         <VBox prefHeight="234.0" prefWidth="175.0">
                             <children>
                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="146.0" snapToPixel="false" text="Orders:" textFill="#947d7d" />
-                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Current Order" textFill="#947d7d" />
-                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="235.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Store Orders" textFill="#947d7d" />
+                                <Button fx:id="currentOrder" mnemonicParsing="false" onAction="#currentOrderPress" prefHeight="25.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Current Order" textFill="#947d7d" />
+                                <Button fx:id="storeOrders" mnemonicParsing="false" onAction="#storeOrderPress" prefHeight="25.0" prefWidth="235.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Store Orders" textFill="#947d7d" />
                             </children>
                         </VBox>
                     </children>
