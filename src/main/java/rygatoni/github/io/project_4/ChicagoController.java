@@ -1,14 +1,9 @@
 package rygatoni.github.io.project_4;
 
-import com.almasb.fxgl.core.collection.Array;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -28,23 +23,23 @@ public class ChicagoController {
 
     CheckBox[] additionalToppings;
 
-    private static double DELUXE_SMALL = 14.99;
-    private static double DELUXE_MEDIUM = 16.99;
-    private static double DELUXE_LARGE = 18.99;
+    private static final double DELUXE_SMALL = 14.99;
+    private static final double DELUXE_MEDIUM = 16.99;
+    private static final double DELUXE_LARGE = 18.99;
 
-    private static double BBQ_SMALL = 13.99;
-    private static double BBQ_MEDIUM = 15.99;
-    private static double BBQ_LARGE = 17.99;
+    private static final double BBQ_SMALL = 13.99;
+    private static final double BBQ_MEDIUM = 15.99;
+    private static final double BBQ_LARGE = 17.99;
 
-    private static double MEATZZA_SMALL = 15.99;
-    private static double MEATZZA_MEDIUM = 17.99;
-    private static double MEATZZA_LARGE = 19.99;
+    private static final double MEATZZA_SMALL = 15.99;
+    private static final double MEATZZA_MEDIUM = 17.99;
+    private static final double MEATZZA_LARGE = 19.99;
 
-    private static double BYO_SMALL = 8.99;
-    private static double BYO_MEDIUM = 10.99;
-    private static double BYO_LARGE = 12.99;
+    private static final double BYO_SMALL = 8.99;
+    private static final double BYO_MEDIUM = 10.99;
+    private static final double BYO_LARGE = 12.99;
 
-    private static double ADDITIONAL_FEE = 1.59;
+    private static final double ADDITIONAL_FEE = 1.59;
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -348,13 +343,12 @@ public class ChicagoController {
             case "BUILD_YOUR_OWN":
                 finalPizza = pizzaFactory.createBuildYourOwn();
                 finalPizza.setSize((Size) sizeDropdown.getValue());
-                for(int i = 0; i < currentToppings.size(); i++) {
-                    finalPizza.add(currentToppings.get(i));
+                for (Topping currentTopping : currentToppings) {
+                    finalPizza.add(currentTopping);
                 }
                 mainController.getCurrentOrder().add(finalPizza);
                 break;
         }
-        //pizzaPrint(finalPizza);
 
         mainController.toCurrentOrders();
     }
