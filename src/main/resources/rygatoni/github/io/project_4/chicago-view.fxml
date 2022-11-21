@@ -61,7 +61,7 @@
                         <Separator opacity="0.0" prefHeight="50.0" prefWidth="599.0" />
                                 <Label text="Sizes" textFill="#947d7d">
                                     <graphic>
-                                        <ComboBox fx:id="sizeDropdown" prefWidth="150.0" style="-fx-background-radius: 40; -fx-background-color: white;" />
+                                        <ComboBox fx:id="sizeDropdown" onAction="#sizeDropdownChanged" prefWidth="150.0" style="-fx-background-radius: 40; -fx-background-color: white;" />
                                     </graphic>
                                     <font>
                                         <Font name="Cambria Bold" size="12.0" />
@@ -74,7 +74,7 @@
                                  <font>
                                     <Font name="Cambria Bold" size="14.0" />
                                  </font></Label>
-                                        <Label fx:id="toppingList" layoutX="14.0" layoutY="42.0" prefHeight="150.0" prefWidth="573.0" text="Preset Toppings">
+                                        <Label fx:id="toppingList" contentDisplay="CENTER" layoutX="14.0" layoutY="42.0" prefHeight="127.0" prefWidth="573.0" text="Preset Toppings" textAlignment="CENTER">
                                             <font>
                                                 <Font name="Cambria" size="12.0" />
                                             </font></Label>

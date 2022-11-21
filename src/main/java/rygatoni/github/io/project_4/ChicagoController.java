@@ -27,6 +27,26 @@ public class ChicagoController {
 
     CheckBox[] additionalToppings;
 
+    private static double DELUXE_SMALL = 14.99;
+    private static double DELUXE_MEDIUM = 16.99;
+    private static double DELUXE_LARGE = 18.99;
+
+    private static double BBQ_SMALL = 13.99;
+    private static double BBQ_MEDIUM = 15.99;
+    private static double BBQ_LARGE = 17.99;
+
+    private static double MEATZZA_SMALL = 15.99;
+    private static double MEATZZA_MEDIUM = 17.99;
+    private static double MEATZZA_LARGE = 19.99;
+
+    private static double BYO_SMALL = 8.99;
+    private static double BYO_MEDIUM = 10.99;
+    private static double BYO_LARGE = 12.99;
+
+    private static double ADDITIONAL_FEE = 1.59;
+
+    @FXML
+    Label pizzaTotal;
     @FXML
     Button mainMenu, addToOrder;
 
@@ -73,6 +93,7 @@ public class ChicagoController {
         addToOrder.setDisable(false);
 
         this.currentToppings = new ArrayList<Topping>();
+        pizzaTotal.setText(Double.toString(DELUXE_SMALL));
     }
 
     public void setMainController(MainController controller) {
@@ -90,6 +111,7 @@ public class ChicagoController {
             for(int i = 0; i < additionalToppings.length; i++) {
                 additionalToppings[i].setSelected(false);
                 additionalToppings[i].setDisable(true);
+                currentToppings.clear();
             }
         } else {
             toppingsLabel.setDisable(false);
@@ -124,6 +146,45 @@ public class ChicagoController {
         this.mode = "BUILD_YOUR_OWN";
     }
 
+    @FXML
+    private void sizeDropdownChanged() {
+        Size sizeDropdownValue = (Size) sizeDropdown.getValue();
+        switch(mode) {
+            case "DELUXE":
+                if(sizeDropdownValue.equals(Size.SMALL)) {
+                    pizzaTotal.setText(Double.toString(DELUXE_SMALL));
+                } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                    pizzaTotal.setText(Double.toString(DELUXE_MEDIUM));
+                } else {
+                    pizzaTotal.setText(Double.toString(DELUXE_LARGE));
+                }
+            case "BBQ_CHICKEN":
+                if(sizeDropdownValue.equals(Size.SMALL)) {
+                    pizzaTotal.setText(Double.toString(BBQ_SMALL));
+                } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                    pizzaTotal.setText(Double.toString(BBQ_MEDIUM));
+                } else {
+                    pizzaTotal.setText(Double.toString(BBQ_LARGE));
+                }
+            case "MEATZZA":
+                if(sizeDropdownValue.equals(Size.SMALL)) {
+                    pizzaTotal.setText(Double.toString(MEATZZA_SMALL));
+                } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                    pizzaTotal.setText(Double.toString(MEATZZA_MEDIUM));
+                } else {
+                    pizzaTotal.setText(Double.toString(MEATZZA_LARGE));
+                }
+            case "BUILD_YOUR_OWN":
+                if(sizeDropdownValue.equals(Size.SMALL)) {
+                    pizzaTotal.setText(Double.toString(BYO_SMALL + ADDITIONAL_FEE * currentToppings.size()));
+                } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                    pizzaTotal.setText(Double.toString(BYO_MEDIUM + ADDITIONAL_FEE * currentToppings.size()));
+                } else {
+                    pizzaTotal.setText(Double.toString(BYO_LARGE + ADDITIONAL_FEE * currentToppings.size()));
+                }
+        }
+    }
+
     private void capacityCheck() {
         if(currentToppings.size() >= 7) {
             for(int i = 0; i < additionalToppings.length; i++) {
@@ -143,6 +204,14 @@ public class ChicagoController {
     private void addRemoveTopping(CheckBox toppingToggle, Topping topping) {
         if(toppingToggle.isSelected()) {
             currentToppings.add(topping);
+            Size sizeDropdownValue = (Size) sizeDropdown.getValue();
+            if(sizeDropdownValue.equals(Size.SMALL)) {
+                pizzaTotal.setText(Double.toString(BYO_SMALL + ADDITIONAL_FEE * currentToppings.size()));
+            } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                pizzaTotal.setText(Double.toString(BYO_MEDIUM + ADDITIONAL_FEE * currentToppings.size()));
+            } else {
+                pizzaTotal.setText(Double.toString(BYO_LARGE + ADDITIONAL_FEE * currentToppings.size()));
+            }
             capacityCheck();
         } else {
             currentToppings.remove(topping);
