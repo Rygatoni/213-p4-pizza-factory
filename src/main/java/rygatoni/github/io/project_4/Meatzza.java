@@ -21,9 +21,6 @@ public class Meatzza extends Pizza {
         this.toppings.add(Topping.HAM);
     }
 
-    public void setSize(Size size) {
-        this.size = size;
-    }
     public double price() {
         switch(this.size) {
             case SMALL:

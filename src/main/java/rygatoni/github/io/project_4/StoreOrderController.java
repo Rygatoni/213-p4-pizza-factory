@@ -10,16 +10,18 @@ import java.io.IOException;
 
 
 public class StoreOrderController {
+
+    private MainController mainController;
+
     @FXML
     Button mainMenu, cancelOrder, exportOrders;
 
+    public void setMainController(MainController controller) {
+        mainController = controller;
+    }
+
     @FXML
-    public void mainMenuPress() throws IOException {
-        Stage stage = (Stage) mainMenu.getScene().getWindow();
-        FXMLLoader mainLoader = new FXMLLoader(PizzaFactoryMain.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(mainLoader.load(), 320, 240);
-        stage.setTitle("RU Pizzeria");
-        stage.setScene(scene);
-        stage.show();
+    public void mainMenuPress() {
+        mainController.backToMainMenu();
     }
 }
