@@ -1,6 +1,6 @@
 package rygatoni.github.io.project_4;
 
-public class NewYorkPizza{
+public class NewYorkPizza implements PizzaFactory{
     public Pizza createDeluxe() {
         Crust deluxeCrust = Crust.BROOKLYN;
         Pizza newDeluxe = new Deluxe(deluxeCrust);

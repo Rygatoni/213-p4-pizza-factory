@@ -14,7 +14,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="792.0" prefWidth="652.0" snapToPixel="false" style="-fx-background-color: antiquewhite;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-53.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Label text="New York Style Pizza" textFill="#947d7d">
+                                <Label text="Chicago Style Pizza" textFill="#947d7d">
                                     <font>
                                         <Font name="Cambria Bold" size="29.0" />
                                     </font>
@@ -26,55 +26,55 @@
                                         <Font name="Cambria Bold" size="18.0" />
                                     </font>
                                 </Label>
-                                <HBox alignment="CENTER" prefHeight="22.0" prefWidth="599.0">
-                                    <children>
-                                        <RadioButton fx:id="deluxeToggle" mnemonicParsing="false" onAction="#deluxeToggle" text="Deluxe" textFill="#947d7d">
-                                            <padding>
-                                                <Insets right="10.0" />
-                                            </padding>
-                                            <font>
-                                                <Font name="Cambria" size="12.0" />
-                                            </font></RadioButton>
-                                        <RadioButton fx:id="bbqToggle" mnemonicParsing="false" onAction="#bbqToggle" text="BBQ Chicken" textFill="#947d7d">
-                                            <padding>
-                                                <Insets right="10.0" />
-                                            </padding>
-                                            <font>
-                                                <Font name="Cambria" size="12.0" />
-                                            </font></RadioButton>
-                                        <RadioButton fx:id="meatzzaToggle" mnemonicParsing="false" onAction="#meatzzaToggle" text="Meatzza" textFill="#947d7d">
-                                            <padding>
-                                                <Insets right="10.0" />
-                                            </padding></RadioButton>
-                                        <RadioButton fx:id="byoToggle" mnemonicParsing="false" onAction="#byoToggle" text="Build Your Own" textFill="#947d7d">
-                                            <padding>
-                                                <Insets right="10.0" />
-                                            </padding>
-                                            <font>
-                                                <Font name="Cambria" size="12.0" />
-                                            </font></RadioButton>
-                                    </children>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                </HBox>
-                                <Separator opacity="0.0" prefHeight="50.0" prefWidth="599.0" />
+                        <HBox alignment="CENTER" prefHeight="22.0" prefWidth="599.0">
+                           <children>
+                              <RadioButton fx:id="deluxeToggle" mnemonicParsing="false" onAction="#deluxeToggle" text="Deluxe" textFill="#947d7d">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></RadioButton>
+                              <RadioButton fx:id="bbqToggle" mnemonicParsing="false" onAction="#bbqToggle" text="BBQ Chicken" textFill="#947d7d">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></RadioButton>
+                              <RadioButton fx:id="meatzzaToggle" mnemonicParsing="false" onAction="#meatzzaToggle" text="Meatzza" textFill="#947d7d">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding></RadioButton>
+                              <RadioButton fx:id="byoToggle" mnemonicParsing="false" onAction="#byoToggle" text="Build Your Own" textFill="#947d7d">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></RadioButton>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </HBox>
+                        <Separator opacity="0.0" prefHeight="50.0" prefWidth="599.0" />
                                 <Label text="Sizes" textFill="#947d7d">
                                     <graphic>
-                                        <ComboBox fx:id="sizeDropdown" prefWidth="150.0" style="-fx-background-radius: 40; -fx-background-color: white;" />
+                                        <ComboBox fx:id="sizeDropdown" onAction="#sizeDropdownChanged" prefWidth="150.0" style="-fx-background-radius: 40; -fx-background-color: white;" />
                                     </graphic>
                                     <font>
                                         <Font name="Cambria Bold" size="12.0" />
                                     </font>
                                 </Label>
-                                <HBox prefHeight="44.0" prefWidth="599.0" />
-                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="267.0">
+                        <HBox prefHeight="44.0" prefWidth="599.0" />
+                                <VBox alignment="CENTER" prefHeight="70.0" prefWidth="652.0">
                                     <children>
                                         <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="78.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Toppings:" textFill="#947d7d">
-                                            <font>
-                                                <Font name="Cambria Bold" size="14.0" />
-                                            </font></Label>
-                                        <Label fx:id="toppingList" layoutX="14.0" layoutY="42.0" prefHeight="150.0" prefWidth="573.0" text="Preset Toppings">
+                                 <font>
+                                    <Font name="Cambria Bold" size="14.0" />
+                                 </font></Label>
+                                        <Label fx:id="toppingList" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="42.0" prefHeight="47.0" prefWidth="417.0" text="Preset Toppings" textAlignment="CENTER">
                                             <font>
                                                 <Font name="Cambria" size="12.0" />
                                             </font></Label>
@@ -83,112 +83,112 @@
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                                     <children>
                                         <Label fx:id="toppingsLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="170.0" style="-fx-background-color: white; -fx-background-radius: 70;" text="Additional Toppings:" textFill="#947d7d">
-                                            <VBox.margin>
-                                                <Insets />
-                                            </VBox.margin>
-                                            <font>
-                                                <Font name="Cambria Bold" size="15.0" />
-                                            </font>
-                                        </Label>
-                                        <HBox prefHeight="8.0" prefWidth="599.0" />
-                                        <GridPane alignment="CENTER">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <children>
-                                                <CheckBox fx:id="greenPepperToggle" alignment="CENTER" mnemonicParsing="false" onAction="#greenPepperToggle" prefHeight="17.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Green Pepper" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="sausageToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#sausageToggle" prefHeight="17.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Sausage" textFill="#947d7d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="pepperoniToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pepperoniToggle" prefHeight="17.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Pepperoni" textFill="#947d7d" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="onionToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onionToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Onion" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="mushroomToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mushroomToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Mushroom" textFill="#947d7d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="bbq2Toggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#bbq2Toggle" prefHeight="17.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="BBQ Chicken" textFill="#947d7d" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="provoloneToggle" alignment="CENTER" mnemonicParsing="false" onAction="#provoloneToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Provolone" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="cheddarToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cheddarToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Cheddar" textFill="#947d7d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="beefToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#beefToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Beef" textFill="#947d7d" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="hamToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#hamToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Ham" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="pineappleToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pineappleToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Pineapple" textFill="#947d7d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="buffaloToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buffaloToggle" style="-fx-background-color: white; -fx-background-radius: 60;" text="Buffalo Chicken" textFill="#947d7d" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font></CheckBox>
-                                                <CheckBox fx:id="meatballToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#meatballToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Meatball" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                                            </children>
-                                        </GridPane>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Cambria Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="8.0" prefWidth="599.0" />
+                              <GridPane alignment="CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                              <CheckBox fx:id="greenPepperToggle" alignment="CENTER" mnemonicParsing="false" onAction="#greenPepperToggle" prefHeight="17.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Green Pepper" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="sausageToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#sausageToggle" prefHeight="17.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Sausage" textFill="#947d7d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="pepperoniToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pepperoniToggle" prefHeight="17.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Pepperoni" textFill="#947d7d" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="onionToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onionToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Onion" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="mushroomToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mushroomToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Mushroom" textFill="#947d7d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="bbq2Toggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#bbq2Toggle" prefHeight="17.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="BBQ Chicken" textFill="#947d7d" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="provoloneToggle" alignment="CENTER" mnemonicParsing="false" onAction="#provoloneToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Provolone" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="cheddarToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cheddarToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Cheddar" textFill="#947d7d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="beefToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#beefToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Beef" textFill="#947d7d" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="hamToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#hamToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Ham" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="pineappleToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pineappleToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Pineapple" textFill="#947d7d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="buffaloToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buffaloToggle" style="-fx-background-color: white; -fx-background-radius: 60;" text="Buffalo Chicken" textFill="#947d7d" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font></CheckBox>
+                                              <CheckBox fx:id="meatballToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#meatballToggle" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 60;" text="Meatball" textFill="#947d7d" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                 </children>
+                              </GridPane>
                                     </children>
                                 </VBox>
-                                <VBox alignment="CENTER" prefHeight="88.0" prefWidth="599.0">
-                                    <children>
-                                        <HBox alignment="CENTER" prefHeight="73.0" prefWidth="599.0">
-                                            <children>
-                                                <Label prefHeight="25.0" prefWidth="60.0" text="Total: " textFill="#947d7d">
-                                                    <font>
-                                                        <Font name="Cambria Bold" size="18.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="pizzaTotal" textFill="#947d7d" />
-                                            </children>
-                                        </HBox>
-                                        <HBox alignment="CENTER" prefHeight="110.0" prefWidth="652.0">
-                                            <children>
-                                                <Button fx:id="mainMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back to Main Menu" textAlignment="CENTER" textFill="#947d7d">
-                                                    <HBox.margin>
-                                                        <Insets right="10.0" />
-                                                    </HBox.margin>
-                                                </Button>
-                                                <Button fx:id="addToOrder" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addToOrderPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Add to Order" textFill="#947d7d">
-                                                    <HBox.margin>
-                                                        <Insets left="10.0" />
-                                                    </HBox.margin>
-                                                    <font>
-                                                        <Font name="Cambria" size="12.0" />
-                                                    </font>
-                                                </Button>
-                                            </children>
-                                        </HBox>
-                                    </children>
-                                </VBox>
+                        <VBox alignment="CENTER" prefHeight="68.0" prefWidth="652.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="10.0" prefWidth="652.0">
+                                 <children>
+                                              <Label prefHeight="25.0" prefWidth="60.0" text="Total: " textFill="#947d7d">
+                                       <font>
+                                          <Font name="Cambria Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                              <Label fx:id="pizzaTotal" textFill="#947d7d" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="43.0" prefWidth="652.0">
+                                 <children>
+                                              <Button fx:id="mainMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back to Main Menu" textAlignment="CENTER" textFill="#947d7d">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                              <Button fx:id="addToOrder" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addToOrderPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Add to Order" textFill="#947d7d">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                             </children>
                         </VBox>
                     </children>

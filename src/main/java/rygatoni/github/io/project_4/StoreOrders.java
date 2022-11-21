@@ -1,14 +1,20 @@
 package rygatoni.github.io.project_4;
 
+import javafx.beans.value.ChangeListener;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+
 import java.util.ArrayList;
 
 public class StoreOrders implements Customizable{
     private ArrayList<Order> orders;
-    private ArrayList<Integer> orderNumbers;
 
     public StoreOrders() {
         this.orders = new ArrayList<>();
-        this.orderNumbers = new ArrayList<>();
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
     }
 
     public boolean add(Object obj) {

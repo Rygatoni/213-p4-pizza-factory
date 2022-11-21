@@ -1,21 +1,55 @@
 package rygatoni.github.io.project_4;
 
+import com.almasb.fxgl.core.collection.Array;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class NewYorkController {
 
     private MainController mainController;
 
+    private PizzaFactory pizzaFactory;
+
+    private String mode;
+
+    private ArrayList<Topping> currentToppings;
+
+    ObservableList<Size> sizeList = FXCollections.observableArrayList(Size.SMALL, Size.MEDIUM, Size.LARGE);
+
+    CheckBox[] additionalToppings;
+
+    private static double DELUXE_SMALL = 14.99;
+    private static double DELUXE_MEDIUM = 16.99;
+    private static double DELUXE_LARGE = 18.99;
+
+    private static double BBQ_SMALL = 13.99;
+    private static double BBQ_MEDIUM = 15.99;
+    private static double BBQ_LARGE = 17.99;
+
+    private static double MEATZZA_SMALL = 15.99;
+    private static double MEATZZA_MEDIUM = 17.99;
+    private static double MEATZZA_LARGE = 19.99;
+
+    private static double BYO_SMALL = 8.99;
+    private static double BYO_MEDIUM = 10.99;
+    private static double BYO_LARGE = 12.99;
+
+    private static double ADDITIONAL_FEE = 1.59;
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+
+    @FXML
+    Label pizzaTotal;
     @FXML
     Button mainMenu, addToOrder;
 
@@ -23,16 +57,48 @@ public class NewYorkController {
     RadioButton deluxeToggle, bbqToggle, meatzzaToggle, byoToggle;
 
     @FXML
+    Label toppingsLabel, toppingList;
+
+    @FXML
     CheckBox sausageToggle, pepperoniToggle, greenPepperToggle, onionToggle, mushroomToggle,
-    bbqChickenToggle, provoloneToggle, cheddarToggle, beefToggle, hamToggle, pineappleToggle,
-    buffaloToggle, meatballToggle;
+            bbq2Toggle, provoloneToggle, cheddarToggle, beefToggle, hamToggle, pineappleToggle,
+            buffaloToggle, meatballToggle;
 
     @FXML
     ComboBox sizeDropdown;
 
+    private void setflavorModes() {
+        ToggleGroup flavorModes = new ToggleGroup();
+        deluxeToggle.setToggleGroup(flavorModes);
+        bbqToggle.setToggleGroup(flavorModes);
+        meatzzaToggle.setToggleGroup(flavorModes);
+        byoToggle.setToggleGroup(flavorModes);
+        deluxeToggle.setSelected(true);
+        bbqToggle.setSelected(false);
+        meatzzaToggle.setSelected(false);
+        byoToggle.setSelected(false);
+    }
+
     @FXML
     private void initialize() {
-        deluxeToggle.setSelected(true);
+        pizzaFactory = new NewYorkPizza();
+        setflavorModes();
+        additionalToppings = new CheckBox[]{sausageToggle, pepperoniToggle, greenPepperToggle, onionToggle,
+                mushroomToggle, bbq2Toggle, provoloneToggle, cheddarToggle, beefToggle, hamToggle, pineappleToggle,
+                buffaloToggle, meatballToggle};
+        toppingsLabel.setDisable(true);
+        for(int i = 0; i < additionalToppings.length; i++) {
+            additionalToppings[i].setSelected(false);
+            additionalToppings[i].setDisable(true);
+        }
+        sizeDropdown.setItems(sizeList);
+        sizeDropdown.setValue(Size.SMALL);
+        addToOrder.setDisable(false);
+
+        toppingList.setText("Sausage,   Pepperoni,   Green Pepper,   Onion,   Mushroom");
+
+        this.currentToppings = new ArrayList<Topping>();
+        pizzaTotal.setText(Double.toString(DELUXE_SMALL));
     }
 
     public void setMainController(MainController controller) {
@@ -44,60 +110,238 @@ public class NewYorkController {
         mainController.backToMainMenu();
     }
 
-    public void deluxeToggle(ActionEvent actionEvent) {
+    private void additionalToppingsEnable(boolean enable) {
+        if(!enable) {
+            toppingsLabel.setDisable(true);
+            for(int i = 0; i < additionalToppings.length; i++) {
+                additionalToppings[i].setSelected(false);
+                additionalToppings[i].setDisable(true);
+                currentToppings.clear();
+            }
+        } else {
+            toppingsLabel.setDisable(false);
+            for(int i = 0; i < additionalToppings.length; i++) {
+                additionalToppings[i].setSelected(false);
+                additionalToppings[i].setDisable(false);
+            }
+        }
     }
 
-    public void bbqToggle(ActionEvent actionEvent) {
+    @FXML
+    public void deluxeToggle() {
+        additionalToppingsEnable(false);
+        this.mode = "DELUXE";
+        pizzaTotalUpdate();
+        presetToppingUpdate();
     }
 
-    public void meatzzaToggle(ActionEvent actionEvent) {
+    @FXML
+    public void bbqToggle() {
+        additionalToppingsEnable(false);
+        this.mode = "BBQ_CHICKEN";
+        pizzaTotalUpdate();
+        presetToppingUpdate();
     }
 
-    public void byoToggle(ActionEvent actionEvent) {
+    @FXML
+    public void meatzzaToggle() {
+        additionalToppingsEnable(false);
+        this.mode = "MEATZZA";
+        pizzaTotalUpdate();
+        presetToppingUpdate();
     }
 
-    public void sausageToggle(ActionEvent actionEvent) {
+    @FXML
+    public void byoToggle() {
+        additionalToppingsEnable(true);
+        this.mode = "BUILD_YOUR_OWN";
+        pizzaTotalUpdate();
+        presetToppingUpdate();
     }
 
-    public void meatballToggle(ActionEvent actionEvent) {
+    private void presetToppingUpdate() {
+        switch(mode) {
+            case "DELUXE":
+                toppingList.setText("Sausage,   Pepperoni,   Green Pepper,   Onion,   Mushroom");
+                break;
+            case "BBQ_CHICKEN":
+                toppingList.setText("BBQ Chicken,   Green Pepper,   Provolone,   Cheddar");
+                break;
+            case "MEATZZA":
+                toppingList.setText("Sausage,   Pepperoni,   Beef,   Ham");
+                break;
+            case "BUILD_YOUR_OWN":
+                toppingList.setText("Choose your own toppings!");
+                break;
+        }
     }
 
-    public void pepperoniToggle(ActionEvent actionEvent) {
+
+    private void pizzaTotalUpdate() {
+        Size sizeDropdownValue = (Size) sizeDropdown.getValue();
+        switch(mode) {
+            case "DELUXE":
+                if(sizeDropdownValue.equals(Size.SMALL)) {
+                    pizzaTotal.setText(Double.toString(DELUXE_SMALL));
+                } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                    pizzaTotal.setText(Double.toString(DELUXE_MEDIUM));
+                } else {
+                    pizzaTotal.setText(Double.toString(DELUXE_LARGE));
+                }
+                break;
+            case "BBQ_CHICKEN":
+                if(sizeDropdownValue.equals(Size.SMALL)) {
+                    pizzaTotal.setText(Double.toString(BBQ_SMALL));
+                } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                    pizzaTotal.setText(Double.toString(BBQ_MEDIUM));
+                } else {
+                    pizzaTotal.setText(Double.toString(BBQ_LARGE));
+                }
+                break;
+            case "MEATZZA":
+                if(sizeDropdownValue.equals(Size.SMALL)) {
+                    pizzaTotal.setText(Double.toString(MEATZZA_SMALL));
+                } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                    pizzaTotal.setText(Double.toString(MEATZZA_MEDIUM));
+                } else {
+                    pizzaTotal.setText(Double.toString(MEATZZA_LARGE));
+                }
+                break;
+            case "BUILD_YOUR_OWN":
+                if(sizeDropdownValue.equals(Size.SMALL)) {
+                    pizzaTotal.setText(df.format(BYO_SMALL + ADDITIONAL_FEE * currentToppings.size()));
+                } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
+                    pizzaTotal.setText(df.format(BYO_MEDIUM + ADDITIONAL_FEE * currentToppings.size()));
+                } else {
+                    pizzaTotal.setText(df.format(BYO_LARGE + ADDITIONAL_FEE * currentToppings.size()));
+                }
+                break;
+        }
+    }
+    @FXML
+    private void sizeDropdownChanged() {
+        pizzaTotalUpdate();
     }
 
-    public void greenPepperToggle(ActionEvent actionEvent) {
+    private void capacityCheck() {
+        if(currentToppings.size() >= 7) {
+            for(int i = 0; i < additionalToppings.length; i++) {
+                if(!additionalToppings[i].isSelected()) {
+                    additionalToppings[i].setDisable(true);
+                }
+            }
+        } else {
+            for(int i = 0; i < additionalToppings.length; i++) {
+                if(additionalToppings[i].isDisable()) {
+                    additionalToppings[i].setDisable(false);
+                }
+            }
+        }
     }
 
-    public void buffaloToggle(ActionEvent actionEvent) {
+    private void addRemoveTopping(CheckBox toppingToggle, Topping topping) {
+        if(toppingToggle.isSelected()) {
+            currentToppings.add(topping);
+            pizzaTotalUpdate();
+            capacityCheck();
+        } else {
+            currentToppings.remove(topping);
+            pizzaTotalUpdate();
+            capacityCheck();
+        }
     }
 
-    public void onionToggle(ActionEvent actionEvent) {
+    @FXML
+    public void sausageToggle() {
+        addRemoveTopping(sausageToggle, Topping.SAUSAGE);
     }
 
-    public void mushroomToggle(ActionEvent actionEvent) {
+    @FXML
+    public void pepperoniToggle() {
+        addRemoveTopping(pepperoniToggle, Topping.PEPPERONI);
     }
 
-    public void hamToggle(ActionEvent actionEvent) {
+    @FXML
+    public void greenPepperToggle() {
+        addRemoveTopping(greenPepperToggle, Topping.GREEN_PEPPER);
     }
 
-    public void bbqChickenToggle(ActionEvent actionEvent) {
+    @FXML
+    public void onionToggle() {
+        addRemoveTopping(onionToggle, Topping.ONION);
     }
 
-    public void beefToggle(ActionEvent actionEvent) {
+    @FXML
+    public void mushroomToggle() {
+        addRemoveTopping(mushroomToggle, Topping.MUSHROOM);
     }
 
-    public void provoloneToggle(ActionEvent actionEvent) {
+    @FXML
+    public void bbq2Toggle() {
+        addRemoveTopping(bbq2Toggle, Topping.BBQ_CHICKEN);
     }
 
-    public void cheddarToggle(ActionEvent actionEvent) {
+    @FXML
+    public void provoloneToggle() {
+        addRemoveTopping(provoloneToggle, Topping.PROVOLONE);
     }
 
-    public void addToOrderPress(ActionEvent actionEvent) {
+    @FXML
+    public void cheddarToggle() {
+        addRemoveTopping(cheddarToggle, Topping.CHEDDAR);
     }
 
-    public void bbq2Toggle(ActionEvent actionEvent) {
+    @FXML
+    public void beefToggle() {
+        addRemoveTopping(beefToggle, Topping.BEEF);
     }
 
-    public void pineappleToggle(ActionEvent actionEvent) {
+    @FXML
+    public void hamToggle() {
+        addRemoveTopping(hamToggle, Topping.HAM);
     }
+
+    @FXML
+    public void pineappleToggle() {
+        addRemoveTopping(pineappleToggle, Topping.PINEAPPLE);
+    }
+
+    @FXML
+    public void buffaloToggle() {
+        addRemoveTopping(buffaloToggle, Topping.BUFFALO_CHICKEN);
+    }
+
+    @FXML
+    public void meatballToggle() {
+        addRemoveTopping(meatballToggle, Topping.MEATBALL);
+    }
+
+    public void addToOrderPress() {
+        Pizza finalPizza;
+        switch(mode) {
+            case "DELUXE":
+                finalPizza = pizzaFactory.createDeluxe();
+                finalPizza.setSize((Size) sizeDropdown.getValue());
+                mainController.getCurrentOrder().add(finalPizza);
+                break;
+            case "BBQ_CHICKEN":
+                finalPizza = pizzaFactory.createBBQChicken();
+                finalPizza.setSize((Size) sizeDropdown.getValue());
+                mainController.getCurrentOrder().add(finalPizza);
+            case "MEATZZA":
+                finalPizza = pizzaFactory.createMeatzza();
+                finalPizza.setSize((Size) sizeDropdown.getValue());
+                mainController.getCurrentOrder().add(finalPizza);
+            case "BUILD_YOUR_OWN":
+                finalPizza = pizzaFactory.createBuildYourOwn();
+                finalPizza.setSize((Size) sizeDropdown.getValue());
+                for(int i = 0; i < currentToppings.size(); i++) {
+                    finalPizza.add(currentToppings.get(i));
+                }
+                mainController.getCurrentOrder().add(finalPizza);
+        }
+        mainController.backToMainMenu();
+    }
+
+
 }

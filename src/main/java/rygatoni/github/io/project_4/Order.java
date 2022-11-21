@@ -39,7 +39,7 @@ public class Order implements Customizable{
     }
 
     public double subtotal() {
-        int subtotal = 0;
+        double subtotal = 0;
         for(int i = 0; i < this.pizzas.size(); i++) {
             Pizza currentPizza = this.pizzas.get(i);
             double currentPrice = currentPizza.price();

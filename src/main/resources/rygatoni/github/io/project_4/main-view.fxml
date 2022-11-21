@@ -39,9 +39,9 @@
                               <Font name="Cambria Bold" size="12.0" />
                            </font></Label>
                         <Separator opacity="0.0" prefWidth="200.0" />
-                                <Button fx:id="currentOrder" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#currentOrderPress" prefHeight="14.0" prefWidth="138.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Current Order" textFill="#947d7d" />
+                                <Button fx:id="currentOrder" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#currentOrderPress" prefHeight="14.0" prefWidth="138.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Current Order" textFill="#947d7d" />
                         <Separator opacity="0.0" prefHeight="9.0" prefWidth="157.0" />
-                                <Button fx:id="storeOrders" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#storeOrderPress" prefHeight="14.0" prefWidth="138.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Store Orders" textFill="#947d7d" />
+                                <Button fx:id="storeOrders" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#storeOrderPress" prefHeight="14.0" prefWidth="138.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Store Orders" textFill="#947d7d" />
                             </children>
                         </VBox>
                     </children>

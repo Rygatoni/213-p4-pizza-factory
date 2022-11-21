@@ -68,13 +68,13 @@
                                     </font>
                                 </Label>
                         <HBox prefHeight="44.0" prefWidth="599.0" />
-                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="267.0">
+                                <VBox alignment="CENTER" prefHeight="70.0" prefWidth="652.0">
                                     <children>
                                         <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="78.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Toppings:" textFill="#947d7d">
                                  <font>
                                     <Font name="Cambria Bold" size="14.0" />
                                  </font></Label>
-                                        <Label fx:id="toppingList" contentDisplay="CENTER" layoutX="14.0" layoutY="42.0" prefHeight="127.0" prefWidth="573.0" text="Preset Toppings" textAlignment="CENTER">
+                                        <Label fx:id="toppingList" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="42.0" prefHeight="47.0" prefWidth="417.0" text="Preset Toppings" textAlignment="CENTER">
                                             <font>
                                                 <Font name="Cambria" size="12.0" />
                                             </font></Label>
@@ -158,9 +158,9 @@
                               </GridPane>
                                     </children>
                                 </VBox>
-                        <VBox alignment="CENTER" prefHeight="88.0" prefWidth="599.0">
+                        <VBox alignment="CENTER" prefHeight="68.0" prefWidth="652.0">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="73.0" prefWidth="599.0">
+                              <HBox alignment="CENTER" prefHeight="10.0" prefWidth="652.0">
                                  <children>
                                               <Label prefHeight="25.0" prefWidth="60.0" text="Total: " textFill="#947d7d">
                                        <font>
@@ -170,7 +170,7 @@
                                               <Label fx:id="pizzaTotal" textFill="#947d7d" />
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="110.0" prefWidth="652.0">
+                              <HBox alignment="CENTER" prefHeight="43.0" prefWidth="652.0">
                                  <children>
                                               <Button fx:id="mainMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back to Main Menu" textAlignment="CENTER" textFill="#947d7d">
                                        <HBox.margin>

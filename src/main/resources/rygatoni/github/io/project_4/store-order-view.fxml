@@ -17,12 +17,12 @@
                                         <Font name="Cambria Bold" size="25.0" />
                                     </font>
                                 </Label>
-                                <ListView editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-color: white;" />
+                                <ListView fx:id="orderList" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-color: white;" />
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                                         <Button fx:id="mainMenu" layoutX="48.0" layoutY="13.0" mnemonicParsing="false" onAction="#mainMenuPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Back To Main Menu" />
-                                        <Button layoutX="212.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cancel Order" />
-                                        <Button layoutX="343.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Export Orders" />
+                                        <Button fx:id="cancelOrder" disable="true" layoutX="212.0" layoutY="13.0" mnemonicParsing="false" onAction="#cancelOrderPress" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cancel Order" />
+                                        <Button fx:id="exportOrders" disable="true" layoutX="343.0" layoutY="13.0" mnemonicParsing="false" onAction="#exportOrdersPress" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Export Orders" />
                            </children>
                         </Pane>
                             </children>

@@ -8,17 +8,9 @@ public abstract class Pizza implements Customizable {
     private Size size;
     public abstract double price();
 
-    public ArrayList<Topping> getToppings() {
-        return this.toppings;
-    }
+    public abstract ArrayList<Topping> getToppings();
+    public abstract Size getSize();
+    public abstract void setSize(Size size);
 
-    public Crust getCrust() {
-        return this.crust;
-    }
-    public Size getSize() {
-        return this.size;
-    }
-    public void setSize(Size size) {
-        this.size = size;
-    }
+    public abstract Crust getCrust();
 }
