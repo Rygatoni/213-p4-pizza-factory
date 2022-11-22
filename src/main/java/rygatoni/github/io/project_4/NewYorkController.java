@@ -15,16 +15,31 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class NewYorkController {
-
+    /**
+     * Main Controller
+     */
     private MainController mainController;
+    /**
+     * New york Style Pizza Factory
+     */
 
     private PizzaFactory pizzaFactory;
+    /**
+     * Setting for which pizza flavor is chosen
+     */
 
     private String mode;
-
+    /**
+     * List of current toppings
+     */
     private ArrayList<Topping> currentToppings;
-
+    /**
+     * List of pizza sizes
+     */
     ObservableList<Size> sizeList = FXCollections.observableArrayList(Size.SMALL, Size.MEDIUM, Size.LARGE);
+    /**
+     * Additional toppings checkbox
+     */
 
     CheckBox[] additionalToppings;
 
@@ -47,15 +62,22 @@ public class NewYorkController {
     private static double ADDITIONAL_FEE = 1.59;
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
-
+    /**
+     * Labels for the pizza total price, toppings label, the list of toppings and crust
+     */
     @FXML
     Label pizzaTotal;
     @FXML
     Button mainMenu, addToOrder;
+    /**
+     * Radio Buttons for pizza flavors
+     */
 
     @FXML
     RadioButton deluxeToggle, bbqToggle, meatzzaToggle, byoToggle;
-
+    /**
+     * Image view for New York Style pizza
+     */
     @FXML
     Label toppingsLabel, toppingList;
 
@@ -63,10 +85,14 @@ public class NewYorkController {
     CheckBox sausageToggle, pepperoniToggle, greenPepperToggle, onionToggle, mushroomToggle,
             bbq2Toggle, provoloneToggle, cheddarToggle, beefToggle, hamToggle, pineappleToggle,
             buffaloToggle, meatballToggle;
-
+    /**
+     * Combo Box to choose pizza sizes
+     */
     @FXML
     ComboBox sizeDropdown;
-
+    /**
+     * Sets toggle groups for the flavors
+     */
     private void setflavorModes() {
         ToggleGroup flavorModes = new ToggleGroup();
         deluxeToggle.setToggleGroup(flavorModes);
@@ -78,7 +104,9 @@ public class NewYorkController {
         meatzzaToggle.setSelected(false);
         byoToggle.setSelected(false);
     }
-
+    /**
+     * Sets initial settings of New York view
+     */
     @FXML
     private void initialize() {
         pizzaFactory = new NewYorkPizza();
@@ -100,16 +128,25 @@ public class NewYorkController {
         this.currentToppings = new ArrayList<Topping>();
         pizzaTotal.setText(Double.toString(DELUXE_SMALL));
     }
+    /**
+     * Sets a controller as the main controller
+     * @param controller The controller that is to be set as the main
+     */
 
     public void setMainController(MainController controller) {
         mainController = controller;
     }
-
+    /**
+     * Loads the main menu when the Main Menu button is pressed
+     */
     @FXML
     public void mainMenuPress() {
         mainController.backToMainMenu();
     }
-
+    /**
+     * Enables additional toppings to be selected
+     * @param enable Enable or other
+     */
     private void additionalToppingsEnable(boolean enable) {
         if(!enable) {
             toppingsLabel.setDisable(true);
@@ -126,6 +163,9 @@ public class NewYorkController {
             }
         }
     }
+    /**
+     * Updates the pizza when deluxe is selected
+     */
 
     @FXML
     public void deluxeToggle() {
@@ -134,7 +174,9 @@ public class NewYorkController {
         pizzaTotalUpdate();
         presetToppingUpdate();
     }
-
+    /**
+     * Updates the pizza when bbq is selected
+     */
     @FXML
     public void bbqToggle() {
         additionalToppingsEnable(false);
@@ -142,7 +184,9 @@ public class NewYorkController {
         pizzaTotalUpdate();
         presetToppingUpdate();
     }
-
+    /**
+     * Updates the pizza when meatzza is selected
+     */
     @FXML
     public void meatzzaToggle() {
         additionalToppingsEnable(false);
@@ -150,7 +194,9 @@ public class NewYorkController {
         pizzaTotalUpdate();
         presetToppingUpdate();
     }
-
+    /**
+     * Updates the pizza when Build Your Own is selected
+     */
     @FXML
     public void byoToggle() {
         additionalToppingsEnable(true);
@@ -175,7 +221,9 @@ public class NewYorkController {
                 break;
         }
     }
-
+    /**
+     * Calculates the pizza price
+     */
 
     private void pizzaTotalUpdate() {
         Size sizeDropdownValue = (Size) sizeDropdown.getValue();
@@ -218,11 +266,16 @@ public class NewYorkController {
                 break;
         }
     }
+    /**
+     * Updates pizza price when the size is changed
+     */
     @FXML
     private void sizeDropdownChanged() {
         pizzaTotalUpdate();
     }
-
+    /**
+     * Checks if the topping limit is passed
+     */
     private void capacityCheck() {
         if(currentToppings.size() >= 7) {
             for(int i = 0; i < additionalToppings.length; i++) {
@@ -238,7 +291,11 @@ public class NewYorkController {
             }
         }
     }
-
+    /**
+     * Adds or removes a topping
+     * @param toppingToggle Topping check box
+     * @param topping Topping to be added or removed
+     */
     private void addRemoveTopping(CheckBox toppingToggle, Topping topping) {
         if(toppingToggle.isSelected()) {
             currentToppings.add(topping);
@@ -250,67 +307,94 @@ public class NewYorkController {
             capacityCheck();
         }
     }
+    /**
+     * Adds or Removes sausage based on toggle
+     */
 
     @FXML
     public void sausageToggle() {
         addRemoveTopping(sausageToggle, Topping.SAUSAGE);
     }
-
+    /**
+     * Adds or Removes pepperoni based on toggle
+     */
     @FXML
     public void pepperoniToggle() {
         addRemoveTopping(pepperoniToggle, Topping.PEPPERONI);
     }
-
+    /**
+     * Adds or Removes green pepper based on toggle
+     */
     @FXML
     public void greenPepperToggle() {
         addRemoveTopping(greenPepperToggle, Topping.GREEN_PEPPER);
     }
-
+    /**
+     * Adds or Removes onion based on toggle
+     */
     @FXML
     public void onionToggle() {
         addRemoveTopping(onionToggle, Topping.ONION);
     }
-
+    /**
+     * Adds or Removes mushroom based on toggle
+     */
     @FXML
     public void mushroomToggle() {
         addRemoveTopping(mushroomToggle, Topping.MUSHROOM);
     }
-
+    /**
+     * Adds or Removes bbq chicken based on toggle
+     */
     @FXML
     public void bbq2Toggle() {
         addRemoveTopping(bbq2Toggle, Topping.BBQ_CHICKEN);
     }
-
+    /**
+     * Adds or Removes provolone based on toggle
+     */
     @FXML
     public void provoloneToggle() {
         addRemoveTopping(provoloneToggle, Topping.PROVOLONE);
     }
-
+    /**
+     * Adds or Removes cheddar based on toggle
+     */
     @FXML
     public void cheddarToggle() {
         addRemoveTopping(cheddarToggle, Topping.CHEDDAR);
     }
-
+    /**
+     * Adds or Removes beef based on toggle
+     */
     @FXML
     public void beefToggle() {
         addRemoveTopping(beefToggle, Topping.BEEF);
     }
-
+    /**
+     * Adds or Removes ham based on toggle
+     */
     @FXML
     public void hamToggle() {
         addRemoveTopping(hamToggle, Topping.HAM);
     }
-
+    /**
+     * Adds or Removes pineapple based on toggle
+     */
     @FXML
     public void pineappleToggle() {
         addRemoveTopping(pineappleToggle, Topping.PINEAPPLE);
     }
-
+    /**
+     * Adds or Removes buffalo chicken based on toggle
+     */
     @FXML
     public void buffaloToggle() {
         addRemoveTopping(buffaloToggle, Topping.BUFFALO_CHICKEN);
     }
-
+    /**
+     * Adds or Removes meatball based on toggle
+     */
     @FXML
     public void meatballToggle() {
         addRemoveTopping(meatballToggle, Topping.MEATBALL);

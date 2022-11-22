@@ -13,23 +13,46 @@ import javafx.scene.control.ListView;
 import java.text.DecimalFormat;
 
 public class CurrentOrderController {
-
+    /**
+     * Main controller
+     */
     private MainController mainController;
+
+    /**
+     * Sets a controller as the main controller
+     * @param controller Controller that is being set as the main controller
+     */
 
     public void setMainController(MainController controller) {
         mainController = controller;
     }
 
-    private static final DecimalFormat df = new DecimalFormat("0.00");
+    /**
+     * Decimal format for prices
+     */
 
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+    /**
+     * Labels for the current order, subtotal, sales tax and order total
+     */
     @FXML
     Label currentOrderLabel, subtotal, salesTax, orderTotal;
-
+    /**
+     * Buttons to place an order, remove a pizza, clear an order and going to the main menu
+     */
     @FXML
     Button placeOrder, removePizza, clearOrder, mainMenu;
-
+    /**
+     * List view for the pizza list
+     */
     @FXML
     ListView pizzaList;
+
+    /**
+     * Returns the
+     * @param currentPizza
+     * @return
+     */
 
     private String getPizzaType(Pizza currentPizza){
         switch(currentPizza.getCrust()) {

@@ -20,19 +20,34 @@ import java.util.ArrayList;
 
 
 public class StoreOrderController {
-
+    /**
+     * Main Controller
+     */
     private MainController mainController;
+    /**
+     * List of orders
+     */
 
     private ObservableList<String> orders = FXCollections.observableArrayList();
+    /**
+     * Buttons to go to main menu, cancel an order or export orders
+     */
 
     @FXML
     Button mainMenu, cancelOrder, exportOrders;
-
+    /**
+     * List view to display orders
+     */
     @FXML
     ListView orderList;
-
+    /**
+     * Decimal format for prices
+     */
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
+    /**
+     * Initializes the order list and cancel order button
+     */
     @FXML
     private void initialize() {
         orderList.getSelectionModel().selectedItemProperty().addListener((ChangeListener<String>) (observableValue, s, t1) -> {
@@ -43,6 +58,10 @@ public class StoreOrderController {
             }
         });
     }
+
+    /**
+     * Lists orders with details, order number and order total
+     */
 
     public void listAllocator() {
         orders = FXCollections.observableArrayList();
@@ -65,9 +84,18 @@ public class StoreOrderController {
         orderList.setItems(orders);
     }
 
+    /**
+     * Sets a controller as the main controller
+     * @param controller
+     */
+
     public void setMainController(MainController controller) {
         mainController = controller;
     }
+
+    /**
+     * Removes an order from the order list when the cancel order button is pressed
+     */
 
     @FXML
     private void cancelOrderPress() {
@@ -79,6 +107,10 @@ public class StoreOrderController {
         mainController.getStoreOrders().getOrders().remove(matchingIndex);
         listAllocator();
     }
+
+    /**
+     * Exports the store orders as a text file if the Export Orders button is pressed
+     */
 
     @FXML
     private void exportOrdersPress() {
@@ -114,6 +146,10 @@ public class StoreOrderController {
             }
         }
     }
+
+    /**
+     * Loads the main menu when the main menu button is pressed
+     */
     @FXML
     public void mainMenuPress() {
         mainController.backToMainMenu();

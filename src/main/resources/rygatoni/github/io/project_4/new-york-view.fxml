@@ -14,7 +14,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="792.0" prefWidth="652.0" snapToPixel="false" style="-fx-background-color: antiquewhite;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-53.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Label text="Chicago Style Pizza" textFill="#947d7d">
+                                <Label text="New York Style Pizza" textFill="#947d7d">
                                     <font>
                                         <Font name="Cambria Bold" size="29.0" />
                                     </font>
@@ -68,16 +68,39 @@
                                     </font>
                                 </Label>
                         <HBox prefHeight="44.0" prefWidth="599.0" />
-                                <VBox alignment="CENTER" prefHeight="70.0" prefWidth="652.0">
+                                <VBox alignment="CENTER" prefHeight="146.0" prefWidth="652.0">
                                     <children>
-                                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="78.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Toppings:" textFill="#947d7d">
-                                 <font>
-                                    <Font name="Cambria Bold" size="14.0" />
-                                 </font></Label>
-                                        <Label fx:id="toppingList" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="42.0" prefHeight="47.0" prefWidth="417.0" text="Preset Toppings" textAlignment="CENTER">
-                                            <font>
-                                                <Font name="Cambria" size="12.0" />
-                                            </font></Label>
+                              <HBox alignment="CENTER" prefHeight="0.0" prefWidth="652.0" spacing="250.0">
+                                 <children>
+                                              <Label alignment="CENTER" prefHeight="17.0" prefWidth="78.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Toppings:" textFill="#947d7d">
+                                       <font>
+                                          <Font name="Cambria Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="62.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Crust:" textFill="#947d7d">
+                                       <font>
+                                          <Font name="Cambria Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="159.0" prefWidth="652.0">
+                                 <children>
+                                              <Label fx:id="toppingList" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="417.0" textAlignment="CENTER" textFill="#947d7d">
+                                                  <font>
+                                                      <Font name="Cambria" size="12.0" />
+                                                  </font>
+                                    </Label>
+                                    <Label fx:id="crust" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="419.0" textFill="#947d7d">
+                                       <font>
+                                          <Font name="Cambria" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                                     </children>
                                 </VBox>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -186,6 +209,9 @@
                                        </font>
                                     </Button>
                                  </children>
+                                 <padding>
+                                    <Insets bottom="10.0" />
+                                 </padding>
                               </HBox>
                            </children>
                         </VBox>
