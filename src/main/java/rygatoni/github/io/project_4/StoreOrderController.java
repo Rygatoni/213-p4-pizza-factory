@@ -17,6 +17,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+/**
+ * Controller for the Store Orders view that manages inputs, outputs and data.
+ * Contains executions for the main menu, cancel order, and export orders buttons.
+ * Updates to the store orders are shown in the list view.
+ *
+ * @author Rygl Ato
+ * @author Jeffrey Mijares
+ */
 
 
 public class StoreOrderController {

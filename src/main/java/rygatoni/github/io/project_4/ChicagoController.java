@@ -483,21 +483,6 @@ public class ChicagoController {
         addRemoveTopping(meatballToggle, Topping.MEATBALL);
     }
 
-    /**
-     * Prints the pizza with all its details and price
-     * @param finalPizza Pizza that will be printed
-     */
-
-    private void pizzaPrint(Pizza finalPizza) {
-        String shortenedClassName = finalPizza.getClass().toString().substring(finalPizza.getClass().toString().lastIndexOf('.') + 1).toUpperCase();
-        System.out.println(shortenedClassName + " - " + finalPizza.getCrust() + " - " + finalPizza.getSize());
-        for(int i = 0; i < finalPizza.getToppings().size(); i++) {
-            System.out.print("    -");
-            System.out.println(finalPizza.getToppings().get(i));
-        }
-        System.out.println("--------------- Unit Price: " + finalPizza.price() + " ----");
-        System.out.println();
-    }
     public void addToOrderPress() throws IOException{
         Pizza finalPizza = null;
         switch(mode) {

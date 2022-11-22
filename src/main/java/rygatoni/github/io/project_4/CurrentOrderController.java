@@ -49,9 +49,9 @@ public class CurrentOrderController {
     ListView pizzaList;
 
     /**
-     * Returns the
-     * @param currentPizza
-     * @return
+     * Returns the type of style based on the crust type
+     * @param currentPizza Current Pizza
+     * @return Pizza style as a string
      */
 
     private String getPizzaType(Pizza currentPizza){
@@ -69,11 +69,21 @@ public class CurrentOrderController {
         }
     }
 
+    /**
+     * Updates the subtotal, tax and order total
+     */
+
     private void totalsUpdater() {
         subtotal.setText("$" + df.format(mainController.getCurrentOrder().subtotal()));
         salesTax.setText("$" + df.format(mainController.getCurrentOrder().salesTax()));
         orderTotal.setText("$" + df.format(mainController.getCurrentOrder().orderTotal()));
     }
+
+    /**
+     * Prints a pizza with its details
+     * @param currentPizza Current pizza
+     * @return string of pizza, pizza type, flavor, toppings and size
+     */
 
     public String pizzaPrint(Pizza currentPizza) {
         String finalString = "";
@@ -85,6 +95,10 @@ public class CurrentOrderController {
         }
         return finalString;
     }
+
+    /**
+     * Lists pizzas and their details in an order
+     */
 
     public void listAllocator() {
         currentOrderLabel.setText("Order #" + mainController.getCurrentOrderNumber());
@@ -119,10 +133,17 @@ public class CurrentOrderController {
         });
     }
 
+    /**
+     * Loads main menu when the main menu button is pressed
+     */
     @FXML
     public void mainMenuPress() {
         mainController.backToMainMenu();
     }
+
+    /**
+     * Removes a pizza from an order when the Remove Pizza button is pressed
+     */
 
     @FXML
     public void removePizzaPress() {
@@ -134,6 +155,10 @@ public class CurrentOrderController {
         mainController.getCurrentOrder().getPizzas().remove(matchingIndex);
         listAllocator();
     }
+
+    /**
+     * Clears an order when the Clear Order button is pressed
+     */
     @FXML
     public void clearOrderPress() {
         mainController.clearOrder();

@@ -8,7 +8,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+/**
+ * Controller for the Main Menu view that manages inputs, outputs.
+ * Contains executions for the New York Style Pizza, Chicago Style Pizza, Current Order and Store Orders buttons.
+ * Contains methods to switch between the views.
+ *
+ * @author Rygl Ato
+ * @author Jeffrey Mijares
+ */
 public class MainController {
     /**
      * Stage for main menu

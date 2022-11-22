@@ -1,5 +1,10 @@
 package rygatoni.github.io.project_4;
-
+/**
+ * The Topping enum stores the different types of toppings.
+ *
+ * @author Rygl Ato
+ * @author Jeffrey Mijares
+ */
 public enum Topping {
     SAUSAGE,
     PEPPERONI,
