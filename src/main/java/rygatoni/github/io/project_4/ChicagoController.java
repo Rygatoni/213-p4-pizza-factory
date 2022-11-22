@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -107,7 +109,10 @@ public class ChicagoController {
      */
 
     @FXML
-    Label pizzaTotal;
+    Label pizzaTotal, toppingsLabel, toppingList, crust;
+    /**
+     * Buttons to go to the main menu and to add a pizza to an order
+     */
     @FXML
     Button mainMenu, addToOrder;
     /**
@@ -121,7 +126,10 @@ public class ChicagoController {
      */
 
     @FXML
-    Label toppingsLabel, toppingList;
+    ImageView pizzaImage;
+    /**
+     * Check boxes for additional toppings
+     */
 
     @FXML
     CheckBox sausageToggle, pepperoniToggle, greenPepperToggle, onionToggle, mushroomToggle,
@@ -169,7 +177,10 @@ public class ChicagoController {
         sizeDropdown.setItems(sizeList);
         sizeDropdown.setValue(Size.SMALL);
         addToOrder.setDisable(false);
+        Image image = new Image("https://i.imgur.com/w9STJep.png");
+        pizzaImage.setImage(image);
         this.mode = "DELUXE";
+        crust.setText("Deep Dish");
         toppingList.setText("Sausage,   Pepperoni,   Green Pepper,   Onion,   Mushroom");
 
         this.currentToppings = new ArrayList<Topping>();
@@ -225,7 +236,7 @@ public class ChicagoController {
         additionalToppingsEnable(false);
         this.mode = "DELUXE";
         pizzaTotalUpdate();
-        presetToppingUpdate();
+        presetCrustToppingUpdate();
     }
     /**
      * Updates the pizza when bbq is selected
@@ -236,7 +247,7 @@ public class ChicagoController {
         additionalToppingsEnable(false);
         this.mode = "BBQ_CHICKEN";
         pizzaTotalUpdate();
-        presetToppingUpdate();
+        presetCrustToppingUpdate();
     }
     /**
      * Updates the pizza when meatzza is selected
@@ -247,7 +258,7 @@ public class ChicagoController {
         additionalToppingsEnable(false);
         this.mode = "MEATZZA";
         pizzaTotalUpdate();
-        presetToppingUpdate();
+        presetCrustToppingUpdate();
     }
     /**
      * Updates the pizza when Build Your Own is selected
@@ -258,25 +269,29 @@ public class ChicagoController {
         additionalToppingsEnable(true);
         this.mode = "BUILD_YOUR_OWN";
         pizzaTotalUpdate();
-        presetToppingUpdate();
+        presetCrustToppingUpdate();
     }
     /**
      * Sets pizza toppings and crust based on the mode
      */
 
-    private void presetToppingUpdate() {
+    private void presetCrustToppingUpdate() {
         switch(mode) {
             case "DELUXE":
                 toppingList.setText("Sausage,   Pepperoni,   Green Pepper,   Onion,   Mushroom");
+                crust.setText("Deep Dish");
                 break;
             case "BBQ_CHICKEN":
                 toppingList.setText("BBQ Chicken,   Green Pepper,   Provolone,   Cheddar");
+                crust.setText("Pan");
                 break;
             case "MEATZZA":
                 toppingList.setText("Sausage,   Pepperoni,   Beef,   Ham");
+                crust.setText("Stuffed");
                 break;
             case "BUILD_YOUR_OWN":
                 toppingList.setText("Choose your own toppings!");
+                crust.setText("Pan");
                 break;
         }
     }

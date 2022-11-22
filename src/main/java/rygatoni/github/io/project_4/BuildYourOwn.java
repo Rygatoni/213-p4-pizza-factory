@@ -7,11 +7,11 @@ public class BuildYourOwn extends Pizza {
     private Crust crust;
     private Size size;
 
-    private static double SMALL_PRICE = 8.99;
-    private static double MEDIUM_PRICE = 10.99;
-    private static double LARGE_PRICE = 12.99;
+    private static final double SMALL_PRICE = 8.99;
+    private static final double MEDIUM_PRICE = 10.99;
+    private static final double LARGE_PRICE = 12.99;
 
-    private static double ADDITIONAL_FEE = 1.59;
+    private static final double ADDITIONAL_FEE = 1.59;
 
     public BuildYourOwn(Crust crust) {
         this.crust = crust;
@@ -30,7 +30,7 @@ public class BuildYourOwn extends Pizza {
             default:
                 return 0;
         }
-    };
+    }
 
     public boolean add(Object obj) {
         if(!(obj instanceof Topping)) {

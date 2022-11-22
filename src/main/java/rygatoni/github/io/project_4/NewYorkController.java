@@ -1,14 +1,11 @@
 package rygatoni.github.io.project_4;
 
-import com.almasb.fxgl.core.collection.Array;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -42,31 +39,75 @@ public class NewYorkController {
      */
 
     CheckBox[] additionalToppings;
+    /**
+     * Price for deluxe small pizza
+     */
+    private static final double DELUXE_SMALL = 14.99;
+    /**
+     * Price for deluxe medium pizza
+     */
+    private static final double DELUXE_MEDIUM = 16.99;
+    /**
+     * Price for deluxe large pizza
+     */
+    private static final double DELUXE_LARGE = 18.99;
+    /**
+     * Price for BBQ small pizza
+     */
 
-    private static double DELUXE_SMALL = 14.99;
-    private static double DELUXE_MEDIUM = 16.99;
-    private static double DELUXE_LARGE = 18.99;
+    private static final double BBQ_SMALL = 13.99;
+    /**
+     * Price for BBQ medium pizza
+     */
+    private static final double BBQ_MEDIUM = 15.99;
+    /**
+     * Price for BBQ large pizza
+     */
+    private static final double BBQ_LARGE = 17.99;
+    /**
+     * Price for meatzza small pizza
+     */
 
-    private static double BBQ_SMALL = 13.99;
-    private static double BBQ_MEDIUM = 15.99;
-    private static double BBQ_LARGE = 17.99;
 
-    private static double MEATZZA_SMALL = 15.99;
-    private static double MEATZZA_MEDIUM = 17.99;
-    private static double MEATZZA_LARGE = 19.99;
+    private static final double MEATZZA_SMALL = 15.99;
+    /**
+     * Price for meatzza medium pizza
+     */
+    private static final double MEATZZA_MEDIUM = 17.99;
+    /**
+     * Price for meatzza large pizza
+     */
+    private static final double MEATZZA_LARGE = 19.99;
+    /**
+     * Price for Build Your Own small pizza
+     */
 
-    private static double BYO_SMALL = 8.99;
-    private static double BYO_MEDIUM = 10.99;
-    private static double BYO_LARGE = 12.99;
-
-    private static double ADDITIONAL_FEE = 1.59;
+    private static final double BYO_SMALL = 8.99;
+    /**
+     * Price for Build Your Own medium pizza
+     */
+    private static final double BYO_MEDIUM = 10.99;
+    /**
+     * Price for Build Your Own large pizza
+     */
+    private static final double BYO_LARGE = 12.99;
+    /**
+     * Additional fee amount
+     */
+    private static final double ADDITIONAL_FEE = 1.59;
+    /**
+     * Decimal Format for prices
+     */
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
     /**
      * Labels for the pizza total price, toppings label, the list of toppings and crust
      */
     @FXML
-    Label pizzaTotal;
+    Label pizzaTotal, toppingsLabel, toppingList, crust;
+    /**
+     * Buttons to go to the main menu and to add a pizza to an order
+     */
     @FXML
     Button mainMenu, addToOrder;
     /**
@@ -79,7 +120,11 @@ public class NewYorkController {
      * Image view for New York Style pizza
      */
     @FXML
-    Label toppingsLabel, toppingList;
+    ImageView pizzaImage;
+    /**
+     * Check boxes for additional toppings
+     */
+
 
     @FXML
     CheckBox sausageToggle, pepperoniToggle, greenPepperToggle, onionToggle, mushroomToggle,
@@ -122,7 +167,10 @@ public class NewYorkController {
         sizeDropdown.setItems(sizeList);
         sizeDropdown.setValue(Size.SMALL);
         addToOrder.setDisable(false);
-
+        Image image = new Image("https://i.imgur.com/JEgXKnH.png");
+        pizzaImage.setImage(image);
+        this.mode = "DELUXE";
+        crust.setText("Brooklyn");
         toppingList.setText("Sausage,   Pepperoni,   Green Pepper,   Onion,   Mushroom");
 
         this.currentToppings = new ArrayList<Topping>();
@@ -172,7 +220,7 @@ public class NewYorkController {
         additionalToppingsEnable(false);
         this.mode = "DELUXE";
         pizzaTotalUpdate();
-        presetToppingUpdate();
+        presetCrustToppingUpdate();
     }
     /**
      * Updates the pizza when bbq is selected
@@ -182,7 +230,7 @@ public class NewYorkController {
         additionalToppingsEnable(false);
         this.mode = "BBQ_CHICKEN";
         pizzaTotalUpdate();
-        presetToppingUpdate();
+        presetCrustToppingUpdate();
     }
     /**
      * Updates the pizza when meatzza is selected
@@ -192,7 +240,7 @@ public class NewYorkController {
         additionalToppingsEnable(false);
         this.mode = "MEATZZA";
         pizzaTotalUpdate();
-        presetToppingUpdate();
+        presetCrustToppingUpdate();
     }
     /**
      * Updates the pizza when Build Your Own is selected
@@ -202,22 +250,28 @@ public class NewYorkController {
         additionalToppingsEnable(true);
         this.mode = "BUILD_YOUR_OWN";
         pizzaTotalUpdate();
-        presetToppingUpdate();
+        presetCrustToppingUpdate();
     }
-
-    private void presetToppingUpdate() {
+    /**
+     * Sets pizza toppings and crust based on the mode
+     */
+    private void presetCrustToppingUpdate() {
         switch(mode) {
             case "DELUXE":
                 toppingList.setText("Sausage,   Pepperoni,   Green Pepper,   Onion,   Mushroom");
+                crust.setText("Brooklyn");
                 break;
             case "BBQ_CHICKEN":
                 toppingList.setText("BBQ Chicken,   Green Pepper,   Provolone,   Cheddar");
+                crust.setText("Thin");
                 break;
             case "MEATZZA":
                 toppingList.setText("Sausage,   Pepperoni,   Beef,   Ham");
+                crust.setText("Hand Tossed");
                 break;
             case "BUILD_YOUR_OWN":
                 toppingList.setText("Choose your own toppings!");
+                crust.setText("Hand Tossed");
                 break;
         }
     }
@@ -230,38 +284,38 @@ public class NewYorkController {
         switch(mode) {
             case "DELUXE":
                 if(sizeDropdownValue.equals(Size.SMALL)) {
-                    pizzaTotal.setText(Double.toString(DELUXE_SMALL));
+                    pizzaTotal.setText("$" + DELUXE_SMALL);
                 } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
-                    pizzaTotal.setText(Double.toString(DELUXE_MEDIUM));
+                    pizzaTotal.setText("$" + DELUXE_MEDIUM);
                 } else {
-                    pizzaTotal.setText(Double.toString(DELUXE_LARGE));
+                    pizzaTotal.setText("$" + DELUXE_LARGE);
                 }
                 break;
             case "BBQ_CHICKEN":
                 if(sizeDropdownValue.equals(Size.SMALL)) {
-                    pizzaTotal.setText(Double.toString(BBQ_SMALL));
+                    pizzaTotal.setText("$" + BBQ_SMALL);
                 } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
-                    pizzaTotal.setText(Double.toString(BBQ_MEDIUM));
+                    pizzaTotal.setText("$" + BBQ_MEDIUM);
                 } else {
-                    pizzaTotal.setText(Double.toString(BBQ_LARGE));
+                    pizzaTotal.setText("$" + BBQ_LARGE);
                 }
                 break;
             case "MEATZZA":
                 if(sizeDropdownValue.equals(Size.SMALL)) {
-                    pizzaTotal.setText(Double.toString(MEATZZA_SMALL));
+                    pizzaTotal.setText("$" + Double.toString(MEATZZA_SMALL));
                 } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
-                    pizzaTotal.setText(Double.toString(MEATZZA_MEDIUM));
+                    pizzaTotal.setText("$" + Double.toString(MEATZZA_MEDIUM));
                 } else {
-                    pizzaTotal.setText(Double.toString(MEATZZA_LARGE));
+                    pizzaTotal.setText("$" + Double.toString(MEATZZA_LARGE));
                 }
                 break;
             case "BUILD_YOUR_OWN":
                 if(sizeDropdownValue.equals(Size.SMALL)) {
-                    pizzaTotal.setText(df.format(BYO_SMALL + ADDITIONAL_FEE * currentToppings.size()));
+                    pizzaTotal.setText("$" + df.format(BYO_SMALL + ADDITIONAL_FEE * currentToppings.size()));
                 } else if(sizeDropdownValue.equals(Size.MEDIUM)) {
-                    pizzaTotal.setText(df.format(BYO_MEDIUM + ADDITIONAL_FEE * currentToppings.size()));
+                    pizzaTotal.setText("$" + df.format(BYO_MEDIUM + ADDITIONAL_FEE * currentToppings.size()));
                 } else {
-                    pizzaTotal.setText(df.format(BYO_LARGE + ADDITIONAL_FEE * currentToppings.size()));
+                    pizzaTotal.setText("$" + df.format(BYO_LARGE + ADDITIONAL_FEE * currentToppings.size()));
                 }
                 break;
         }
@@ -400,8 +454,22 @@ public class NewYorkController {
         addRemoveTopping(meatballToggle, Topping.MEATBALL);
     }
 
-    public void addToOrderPress() {
-        Pizza finalPizza;
+    /**
+     * Prints the pizza with all its details and price
+     * @param finalPizza Pizza that will be printed
+     */
+    private void pizzaPrint(Pizza finalPizza) {
+        String shortenedClassName = finalPizza.getClass().toString().substring(finalPizza.getClass().toString().lastIndexOf('.') + 1).toUpperCase();
+        System.out.println(shortenedClassName + " - " + finalPizza.getCrust() + " - " + finalPizza.getSize());
+        for(int i = 0; i < finalPizza.getToppings().size(); i++) {
+            System.out.print("    -");
+            System.out.println(finalPizza.getToppings().get(i));
+        }
+        System.out.println("--------------- Unit Price: " + finalPizza.price() + " ----");
+        System.out.println();
+    }
+    public void addToOrderPress() throws IOException{
+        Pizza finalPizza = null;
         switch(mode) {
             case "DELUXE":
                 finalPizza = pizzaFactory.createDeluxe();
@@ -412,19 +480,23 @@ public class NewYorkController {
                 finalPizza = pizzaFactory.createBBQChicken();
                 finalPizza.setSize((Size) sizeDropdown.getValue());
                 mainController.getCurrentOrder().add(finalPizza);
+                break;
             case "MEATZZA":
                 finalPizza = pizzaFactory.createMeatzza();
                 finalPizza.setSize((Size) sizeDropdown.getValue());
                 mainController.getCurrentOrder().add(finalPizza);
+                break;
             case "BUILD_YOUR_OWN":
                 finalPizza = pizzaFactory.createBuildYourOwn();
                 finalPizza.setSize((Size) sizeDropdown.getValue());
-                for(int i = 0; i < currentToppings.size(); i++) {
-                    finalPizza.add(currentToppings.get(i));
+                for (Topping currentTopping : currentToppings) {
+                    finalPizza.add(currentTopping);
                 }
                 mainController.getCurrentOrder().add(finalPizza);
+                break;
         }
-        mainController.backToMainMenu();
+
+        mainController.toCurrentOrders();
     }
 
 
