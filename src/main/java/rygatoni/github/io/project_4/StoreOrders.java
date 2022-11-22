@@ -6,6 +6,14 @@ import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
 
+/**
+ * The list of orders for RU Pizzeria.
+ * Contains the list of orders, and contains methods for
+ * adding/removing orders.
+ *
+ * @author Rygl Ato
+ * @author Jeffrey Mijares
+ */
 public class StoreOrders implements Customizable{
     /**
      * List of orders

@@ -1,10 +1,8 @@
 package rygatoni.github.io.project_4;
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +10,14 @@ import javafx.scene.control.ListView;
 
 import java.text.DecimalFormat;
 
+/**
+ * Controller of the Current Order.
+ * Allows the user to view the list of pizzas for the current order.
+ * The user can then remove pizzas, clear the entire order, or place the order.
+ *
+ * @author Rygl Ato
+ * @author Jeffrey Mijares
+ */
 public class CurrentOrderController {
     /**
      * Main controller
@@ -122,6 +128,10 @@ public class CurrentOrderController {
         totalsUpdater();
     }
 
+    /**
+     * Runs upon CurrentOrder view initialization. Adds a listener that disables and enables the removePizza
+     * button according to ListView selection.
+     */
     @FXML
     private void initialize() {
         pizzaList.getSelectionModel().selectedItemProperty().addListener((ChangeListener<String>) (observableValue, s, t1) -> {
@@ -163,11 +173,15 @@ public class CurrentOrderController {
     public void clearOrderPress() {
         mainController.clearOrder();
     }
+
+
+    /**
+     * Stores order in StoreOrders, then retrieves the StoreOrders view.
+     */
     @FXML
     public void placeOrderPress() {
         mainController.placeOrder();
         listAllocator();
         mainController.toStoreOrders();
     }
-
 }

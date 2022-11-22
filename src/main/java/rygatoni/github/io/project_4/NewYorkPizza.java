@@ -1,5 +1,11 @@
 package rygatoni.github.io.project_4;
 
+/**
+ * New York-Style Pizza Factory. Creates the four pizza types in New York-style.
+ *
+ * @author Rygl Ato
+ * @author Jeffrey Mijares
+ */
 public class NewYorkPizza implements PizzaFactory{
     /**
      * Returns a New York-style Deluxe pizza.

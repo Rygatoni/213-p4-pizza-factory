@@ -11,6 +11,15 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Controller of the New York View.
+ * Allows the user to change pizza flavors, pizza sizes,
+ * and to add/remove Build Your Own toppings. Users can then
+ * add their created pizza to the current order.
+ *
+ * @author Rygl Ato
+ * @author Jeffrey Mijares
+ */
 public class NewYorkController {
     /**
      * Main Controller
@@ -454,20 +463,6 @@ public class NewYorkController {
         addRemoveTopping(meatballToggle, Topping.MEATBALL);
     }
 
-    /**
-     * Prints the pizza with all its details and price
-     * @param finalPizza Pizza that will be printed
-     */
-    private void pizzaPrint(Pizza finalPizza) {
-        String shortenedClassName = finalPizza.getClass().toString().substring(finalPizza.getClass().toString().lastIndexOf('.') + 1).toUpperCase();
-        System.out.println(shortenedClassName + " - " + finalPizza.getCrust() + " - " + finalPizza.getSize());
-        for(int i = 0; i < finalPizza.getToppings().size(); i++) {
-            System.out.print("    -");
-            System.out.println(finalPizza.getToppings().get(i));
-        }
-        System.out.println("--------------- Unit Price: " + finalPizza.price() + " ----");
-        System.out.println();
-    }
     public void addToOrderPress() throws IOException{
         Pizza finalPizza = null;
         switch(mode) {
@@ -495,7 +490,6 @@ public class NewYorkController {
                 mainController.getCurrentOrder().add(finalPizza);
                 break;
         }
-
         mainController.toCurrentOrders();
     }
 

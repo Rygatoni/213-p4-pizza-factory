@@ -215,7 +215,6 @@ public class MainController {
     /**
      * Loads the Current Orders view
      */
-
     public void toCurrentOrders() {
         currentOrder.setDisable(false);
         storeOrders.setDisable(false);

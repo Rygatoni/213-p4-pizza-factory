@@ -6,7 +6,16 @@ package rygatoni.github.io.project_4;
  * @author Jeffrey Mijares
  */
 public enum Size {
+    /**
+     * Small size of pizza
+     */
     SMALL,
+    /**
+     * Medium size of pizza
+     */
     MEDIUM,
+    /**
+     * Large size of pizza
+     */
     LARGE
 }

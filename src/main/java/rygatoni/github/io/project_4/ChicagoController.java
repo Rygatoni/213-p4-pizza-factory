@@ -10,7 +10,15 @@ import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-
+/**
+ * Controller of the Chicago View.
+ * Allows the user to change pizza flavors, pizza sizes,
+ * and to add/remove Build Your Own toppings. Users can then
+ * add their created pizza to the current order.
+ *
+ * @author Rygl Ato
+ * @author Jeffrey Mijares
+ */
 public class ChicagoController {
     /**
      * Main Controller
@@ -510,7 +518,6 @@ public class ChicagoController {
                 mainController.getCurrentOrder().add(finalPizza);
                 break;
         }
-
         mainController.toCurrentOrders();
     }
 
